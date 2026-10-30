@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#0a101d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="XO Arena">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="description" content="XO Arena — play tic-tac-toe together, against the computer, or online.">
+  <title>XO Arena · Tic-Tac-Toe</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='42' fill='%230d1526'/%3E%3Cpath d='M32 35L78 81M78 35L32 81' stroke='%236ce6cb' stroke-width='15' stroke-linecap='round'/%3E%3Ccircle cx='126' cy='119' r='29' fill='none' stroke='%23ad98ff' stroke-width='15'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0a101d; --panel:#131e30; --panel2:#19263a; --stroke:#2a3950;
+      --text:#eef5ff; --dim:#9aacc5; --x:#6ce6cb; --o:#b8a0ff; --warn:#ffd397;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{min-height:100%;background:var(--bg);-webkit-text-size-adjust:100%;touch-action:manipulation}
+    body{margin:0;min-height:100svh;color:var(--text);background:
+      radial-gradient(ellipse 90% 45% at 50% -8%,#223250 0%,transparent 74%),
+      radial-gradient(circle at 105% 60%,#182b36 0%,transparent 48%),var(--bg);
+      overscroll-behavior-y:none}
+    button,input{font:inherit;-webkit-tap-highlight-color:transparent}
+    button{cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+    button:disabled{cursor:default;opacity:.42}
+    button:focus-visible,input:focus-visible{outline:3px solid var(--x);outline-offset:3px}
+    .app{width:min(100%,500px);margin:0 auto;padding:calc(env(safe-area-inset-top) + 22px) 20px calc(env(safe-area-inset-bottom) + 30px)}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-icon{width:48px;height:48px;border-radius:15px;background:#1b2940;display:grid;place-items:center;
+      border:1px solid #34455e;box-shadow:0 8px 30px #03071345;flex-shrink:0}
+    .brand-icon svg{width:34px;height:34px}
+    .eyebrow{font-weight:750;letter-spacing:.18em;text-transform:uppercase;font-size:10px;color:var(--x)}
+    h1{font-size:23px;letter-spacing:-.055em;line-height:1.08;margin:3px 0 0;font-weight:800}
+    .sound{width:44px;height:44px;display:grid;place-items:center;border-radius:15px;background:var(--panel);
+      border:1px solid var(--stroke);color:var(--dim);flex-shrink:0}
+    .sound svg{width:20px;height:20px}
+    .sound[aria-pressed="false"]{color:#687a93}
+    .modes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;background:#111b2c;
+      padding:6px;border-radius:17px;border:1px solid #25354c;margin-bottom:12px}
+    .mode{min-width:0;border:0;border-radius:12px;padding:13px 5px;background:transparent;
+      color:#9aacc5;font-weight:750;font-size:12px;transition:background .16s,color .16s}
+    .mode[aria-pressed="true"]{background:#2a3b52;color:#fff;box-shadow:0 2px 10px #0509133d}
+    .difficulty{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 14px;
+      padding:11px 13px;background:#111a29;border:1px solid #26354a;border-radius:13px}
+    .difficulty span{font-size:13px;color:var(--dim);font-weight:650}
+    .difficulty .choices{display:flex;gap:5px}
+    .difficulty button{padding:9px 12px;border-radius:9px;border:1px solid transparent;background:transparent;
+      color:var(--dim);font-size:12px;font-weight:750}
+    .difficulty button[aria-pressed="true"]{background:#34475c;color:var(--text);border-color:#4a5e76}
+    .status{min-height:89px;display:flex;align-items:center;justify-content:space-between;
+      border:1px solid #2d4057;border-radius:19px;padding:16px 17px;background:linear-gradient(130deg,#19283d,#142033);
+      gap:12px;margin-bottom:14px}
+    .status h2{font-size:21px;margin:1px 0 4px;font-weight:800;letter-spacing:-.04em}
+    .subtext{font-size:12px;color:var(--dim);line-height:1.4;max-width:280px}
+    .badge{white-space:nowrap;border-radius:999px;border:1px solid #39566a;background:#233a47;
+      color:var(--x);padding:8px 10px;font-size:10px;font-weight:850;letter-spacing:.075em;text-transform:uppercase}
+    .badge.wait{border-color:#4b465b;background:#322a40;color:#ceb9ff}
+    .badge.end{border-color:#55506b;background:#302a40;color:#dec8ff}
+    .scores{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:15px}
+    .score{border:1px solid #283a51;background:#121e30;border-radius:16px;padding:13px 9px 11px;text-align:center}
+    .score .who{display:flex;gap:6px;justify-content:center;align-items:center;font-size:11px;color:var(--dim);font-weight:750}
+    .symbol{font-size:14px;font-weight:900}.symbol.x{color:var(--x)}.symbol.o{color:var(--o)}
+    .score strong{display:block;font-size:30px;letter-spacing:-.05em;margin-top:5px;line-height:1.1;font-variant-numeric:tabular-nums}
+    .board-wrap{padding:11px;border-radius:25px;border:1px solid #314159;background:linear-gradient(155deg,#1b2940,#101b2c);
+      box-shadow:0 16px 42px #0308125e,0 2px 0 #ffffff06 inset}
+    .board{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;aspect-ratio:1/1}
+    .cell{min-width:0;min-height:0;aspect-ratio:1/1;display:grid;place-items:center;border-radius:17px;
+      border:1px solid #34465d;background:linear-gradient(145deg,#223249,#19283d);color:var(--text);
+      font-size:clamp(48px,16vw,94px);font-weight:800;line-height:1;letter-spacing:-.09em;
+      transition:background .15s,transform .11s,box-shadow .15s;position:relative;isolation:isolate}
+    .cell:not(:disabled):active{transform:scale(.955);background:#30415a}
+    .cell.x{color:var(--x);text-shadow:0 0 26px #6ce6cb21}
+    .cell.o{color:var(--o);text-shadow:0 0 26px #b8a0ff21}
+    .cell.win{background:#2b4051;box-shadow:inset 0 0 0 1px #647f86}
+    .cell.last:not(.win){box-shadow:inset 0 0 0 1px #586782}
+    .cell.pop{animation:pop .2s ease-out both}
+    @keyframes pop{from{transform:scale(.6);opacity:.45}to{transform:scale(1);opacity:1}}
+    .win-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:visible}
+    .win-line line{stroke:var(--x);stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 2px #6ce6cb99)}
+    .win-line.o line{stroke:var(--o);filter:drop-shadow(0 0 2px #b8a0ff99)}
+    .actions{display:flex;gap:9px;margin-top:15px}
+    .button{min-height:51px;display:inline-flex;gap:8px;align-items:center;justify-content:center;
+      border-radius:14px;border:1px solid #3a5166;background:#213348;color:#ebf3ff;
+      padding:13px 16px;font-size:14px;font-weight:800}
+    .button.primary{flex:1;border-color:transparent;background:var(--x);color:#0b1f24;
+      box-shadow:0 8px 24px #6ce6cb18}
+    .button.small{font-size:12px;min-height:43px;padding:9px 13px}
+    .button:active:not(:disabled){transform:scale(.98)}
+    .button.ghost{background:#162438;border-color:#34465b}
+    .button.full{width:100%}
+    .action-icon{font-size:18px;font-weight:600;line-height:1}
+    .network{border:1px solid #31465b;background:#131f31;border-radius:18px;margin:0 0 15px;padding:17px}
+    .network h3{font-size:15px;letter-spacing:-.02em;margin:0 0 5px}
+    .network p{font-size:12px;line-height:1.5;color:var(--dim);margin:0 0 13px}
+    .network .two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .network .two .button{width:100%}
+    .entry{display:flex;gap:8px;margin-top:11px}
+    .entry input{font-size:17px;letter-spacing:.16em;text-transform:uppercase;font-weight:850;min-width:0;flex:1;
+      border-radius:13px;border:1px solid #43566b;background:#0b1626;color:white;padding:12px 14px;
+      outline:none;text-align:center}
+    .entry input::placeholder{letter-spacing:.05em;font-size:13px;color:#7d92a9;font-weight:600}
+    .entry .button{min-width:88px}
+    .room{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#0e192a;
+      border:1px dashed #52667c;border-radius:15px;padding:13px 15px;margin:10px 0 12px}
+    .room small{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:750}
+    .room strong{font-size:31px;letter-spacing:.17em;color:var(--x);font-weight:850;font-variant-numeric:tabular-nums}
+    .link-actions{display:flex;gap:9px;flex-wrap:wrap}
+    .link-actions .button{flex:1}
+    .invite-url{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--x);font-size:12px;padding:2px 1px 10px;text-decoration:underline;text-underline-offset:3px}
+    .notice{font-size:11px;line-height:1.5;color:#99abc1;margin:10px 0 0}
+    .notice.error{color:var(--warn)}
+    .footer{text-align:center;color:#62778f;font-size:11px;padding:18px 5px 0;letter-spacing:.025em;line-height:1.5}
+    .hidden{display:none!important}
+    .toast{position:fixed;z-index:20;bottom:calc(env(safe-area-inset-bottom) + 23px);left:50%;
+      transform:translate(-50%,15px);border-radius:13px;padding:12px 18px;background:#e5fbf5;color:#0a2932;
+      font-weight:750;font-size:13px;box-shadow:0 12px 40px #0007;opacity:0;pointer-events:none;
+      transition:opacity .2s,transform .2s;white-space:nowrap;max-width:calc(100vw - 30px);overflow:hidden;text-overflow:ellipsis}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:360px){.app{padding-left:14px;padding-right:14px}.cell{border-radius:13px}.board{gap:7px}.scores{gap:6px}.mode{font-size:11px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand"><div class="brand-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M5 7 19 21M19 7 5 21" stroke="#6ce6cb" stroke-width="5" stroke-linecap="round"/><circle cx="29" cy="27" r="9" stroke="#b8a0ff" stroke-width="5"/></svg></div><div><div class="eyebrow">The little rivalry</div><h1>XO Arena<span style="color:#6ce6cb">.</span></h1></div></div>
+      <button class="sound" id="soundButton" type="button" aria-label="Mute sounds" aria-pressed="true" title="Toggle sound">
+        <svg id="soundOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+        <svg id="soundOff" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>
+      </button>
+    </header>
+
+    <nav class="modes" aria-label="Game mode">
+      <button class="mode" type="button" data-mode="local" aria-pressed="true">Same phone</button>
+      <button class="mode" type="button" data-mode="cpu" aria-pressed="false">Vs computer</button>
+      <button class="mode" type="button" data-mode="online" aria-pressed="false">Online P2P</button>
+    </nav>
+
+    <section id="difficulty" class="difficulty hidden" aria-label="Computer difficulty">
+      <span>Computer level</span><div class="choices"><button type="button" data-level="easy" aria-pressed="false">Easy</button><button type="button" data-level="unbeatable" aria-pressed="true">Unbeatable</button></div>
+    </section>
+
+    <section id="network" class="network hidden" aria-label="Online game setup">
+      <div id="onlineStart"><h3>Play with a friend, anywhere.</h3><p>One of you creates a room; the other joins using its six-character code or shared link.</p>
+        <div class="two"><button type="button" class="button primary" id="hostButton">＋ Host room</button><button type="button" class="button ghost" id="revealJoin">Join room</button></div>
+        <div id="joinForm" class="entry hidden"><input id="roomInput" maxlength="6" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" inputmode="text" placeholder="ROOM CODE" aria-label="Six-character room code"><button type="button" class="button primary" id="joinButton">Join</button></div>
+      </div>
+      <div id="onlineRoom" class="hidden">
+        <h3 id="onlineRoomTitle">Your room</h3><div class="room"><div><small>Room code</small><strong id="roomCode">------</strong></div><button type="button" class="button small ghost" id="copyCode">Copy</button></div>
+        <div id="hostLinks"><a id="inviteUrl" class="invite-url hidden" href="#" target="_blank" rel="noopener">Shareable invite link</a><div class="link-actions"><button type="button" class="button small ghost" id="shareButton">↗ Share invite</button><button type="button" class="button small ghost" id="copyLink">Copy link</button></div></div>
+        <p id="networkMessage" class="notice" role="status" aria-live="polite"></p>
+        <button type="button" class="button small ghost full" id="leaveButton">Leave online room</button>
+      </div>
+    </section>
+
+    <section class="status" aria-live="polite" aria-atomic="true">
+      <div><h2 id="statusTitle">X starts the game</h2><div id="statusDetail" class="subtext">Pass the phone when your turn ends.</div></div>
+      <span id="statusBadge" class="badge">X TURN</span>
+    </section>
+
+    <section class="scores" aria-label="Session scoreboard">
+      <div class="score"><div class="who"><span class="symbol x">X</span><span id="labelX">Player X</span></div><strong id="scoreX">0</strong></div>
+      <div class="score"><div class="who"><span class="symbol o">O</span><span id="labelO">Player O</span></div><strong id="scoreO">0</strong></div>
+      <div class="score"><div class="who"><span class="symbol">＝</span>Draws</div><strong id="scoreD">0</strong></div>
+    </section>
+
+    <section class="board-wrap" aria-label="Tic-tac-toe board">
+      <div id="board" class="board" role="grid" aria-label="Three by three game grid">
+        <button type="button" class="cell" role="gridcell" data-i="0" aria-label="Top left, empty"></button>
+        <button type="button" class="cell" role="gridcell" data-i="1" aria-label="Top middle, empty"></button>
+        <button type="button" class="cell" role="gridcell" data-i="2" aria-label="Top right, empty"></button>
+        <button type="button" class="cell" role="gridcell" data-i="3" aria-label="Middle left, empty"></button>
+        <button type="button" class="cell" role="gridcell" data-i="4" aria-label="Center, empty"></button>
+        <button type="button" class="cell" role="gridcell" data-i="5" aria-label="Middle right, empty"></button>
+        <button type="button" class="cell" role="gridcell" data-i="6" aria-label="Bottom left, empty"></button>
+        <button type="button" class="cell" role="gridcell" data-i="7" aria-label="Bottom middle, empty"></button>
+        <button type="button" class="cell" role="gridcell" data-i="8" aria-label="Bottom right, empty"></button>
+        <svg id="winLine" class="win-line hidden" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line id="line" x1="0" y1="0" x2="0" y2="0"/></svg>
+      </div>
+    </section>
+
+    <div class="actions"><button type="button" id="roundButton" class="button primary"><span class="action-icon">↻</span><span id="roundLabel">New round</span></button><button type="button" id="resetButton" class="button ghost" title="Reset scores and start fresh">Reset scores</button></div>
+    <footer class="footer">Three in a row. Endless bragging rights.<br><span id="roundNumber">Round 1</span> · Built for little screens and big rivalries.</footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    'use strict';
+    const $ = id => document.getElementById(id);
+    const squares = [...document.querySelectorAll('.cell')];
+    const LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    const NAMES = ['Top left','Top middle','Top right','Middle left','Center','Middle right','Bottom left','Bottom middle','Bottom right'];
+    const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    const PEER_PREFIX = 'xo-arena-v1-';
+    const STUN = [{urls:['stun:stun.l.google.com:19302','stun:stun1.l.google.com:19302']}];
+    const NEW = () => ({board:Array(9).fill(''),turn:'X',winner:'',line:[],draw:false,last:-1,round:1,revision:0,scores:{X:0,O:0,D:0}});
+
+    let game = NEW();
+    let mode = 'local', level = 'unbeatable', role = '', room = '';
+    let peer = null, connection = null, connected = false, phase = 'idle';
+    let networkNote = '', op = 0, aiTimer = null, joinTimer = null, toastTimer = null;
+    let awaitingMove = false, awaitingRematch = false;
+    let sound = true, audioCtx = null;
+    try { sound = localStorage.getItem('xo-arena-sound') !== 'off'; } catch (_) {}
+
+    function finished() { return !!game.winner || game.draw; }
+    function result(board) {
+      for (const line of LINES) {
+        const [a,b,c] = line;
+        if (board[a] && board[a] === board[b] && board[b] === board[c]) return {winner:board[a],line};
+      }
+      return {winner:'',line:[],draw:board.every(Boolean)};
+    }
+    function vibrate(ms=13) { try { navigator.vibrate?.(ms); } catch (_) {} }
+    function tone(type='tap') {
+      if (!sound) return;
+      try {
+        const Audio = window.AudioContext || window.webkitAudioContext;
+        if (!Audio) return;
+        audioCtx ||= new Audio();
+        if (audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
+        const now = audioCtx.currentTime, oscillator = audioCtx.createOscillator(), gain = audioCtx.createGain();
+        oscillator.type = 'sine';
+        const notes = {X:520,O:400,win:730,draw:300,tap:480};
+        oscillator.frequency.setValueAtTime(notes[type] || 480, now);
+        oscillator.frequency.exponentialRampToValueAtTime((notes[type] || 480)*.78,now+.11);
+        gain.gain.setValueAtTime(.0001,now);
+        gain.gain.exponentialRampToValueAtTime(type==='win'?.038:.025,now+.012);
+        gain.gain.exponentialRampToValueAtTime(.0001,now+.14);
+        oscillator.connect(gain).connect(audioCtx.destination);
+        oscillator.start(now);oscillator.stop(now+.15);
+      } catch (_) {}
+    }
+    function toast(msg) {
+      $('toast').textContent = msg;
+      $('toast').classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>$('toast').classList.remove('show'),2100);
+    }
+    function cancelAI() { clearTimeout(aiTimer);aiTimer=null; }
+    function clearJoinTimer() { clearTimeout(joinTimer);joinTimer=null; }
+    function send(payload) {
+      if (!connected || !connection?.open) return false;
+      try { connection.send(payload); return true; } catch (_) { return false; }
+    }
+    function announce() {
+      if (mode==='online' && !connected) {
+        const title=phase==='lost'?'Player disconnected':phase==='error'?'Connection problem':role==='host'?'Waiting for player…':role==='guest'?'Connecting to host…':'Find your opponent';
+        return {title,detail:networkNote || (role==='host'?'Share the code to invite a friend.':role==='guest'?'Establishing an encrypted P2P connection.':'Host a game or join a friend’s room.'),badge:phase==='lost'?'OFFLINE':phase==='error'?'ERROR':role==='host'?'HOST':role==='guest'?'JOINING':'ONLINE',badgeClass:'wait'};
+      }
+      if (finished()) return {title:game.draw?'It’s a draw!':game.winner+' takes the round!',detail:game.draw?'No spaces left. One more?':'Three in a row. Nicely played!',badge:game.draw?'DRAW':game.winner+' WINS',badgeClass:'end'};
+      if (mode==='online') {
+        const mine = role==='host'?'X':'O';
+        return {title:game.turn===mine?'Your move':'Their move',detail:game.turn===mine?'You’re '+mine+'. Make it count.':'Waiting for your opponent to play.',badge:game.turn===mine?'YOUR TURN':'WAITING',badgeClass:game.turn===mine?'':'wait'};
+      }
+      if (mode==='cpu') return {title:game.turn==='X'?'Your move':'Computer thinking…',detail:game.turn==='X'?'You’re X. Can you beat the machine?':level==='unbeatable'?'Unbeatable is calculating…':'Easy is choosing a move…',badge:game.turn==='X'?'YOUR TURN':'THINKING',badgeClass:game.turn==='X'?'':'wait'};
+      return {title:game.turn+' to play',detail:'Pass the phone when your turn ends.',badge:game.turn+' TURN',badgeClass:''};
+    }
+    function render() {
+      const online = mode==='online';
+      document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
+      document.querySelectorAll('[data-level]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.level===level)));
+      $('difficulty').classList.toggle('hidden',mode!=='cpu');
+      $('network').classList.toggle('hidden',!online);
+      $('onlineStart').classList.toggle('hidden',!online||!!role);
+      $('onlineRoom').classList.toggle('hidden',!online||!role);
+      $('roomCode').textContent = room||'------';
+      $('onlineRoomTitle').textContent = role==='host'?'Your private room':'Joined room';
+      $('hostLinks').classList.toggle('hidden',role!=='host');
+      const invite=makeInvite();
+      $('inviteUrl').classList.toggle('hidden',!invite);
+      if(invite){$('inviteUrl').textContent=invite;$('inviteUrl').href=invite;}
+      $('networkMessage').textContent = networkNote || (role==='host'?(connected?'Friend connected! You play X.':'Keep this screen open and share your invite.'):(connected?'Connected! You play O.':'Connecting to your friend…'));
+      $('networkMessage').classList.toggle('error',phase==='error'||phase==='lost');
+      $('labelX').textContent = online?'Host':mode==='cpu'?'You':'Player X';
+      $('labelO').textContent = online?'Guest':mode==='cpu'?'Computer':'Player O';
+      $('scoreX').textContent = game.scores.X;
+      $('scoreO').textContent = game.scores.O;
+      $('scoreD').textContent = game.scores.D;
+      $('roundNumber').textContent = 'Round '+game.round;
+      const status = announce();
+      $('statusTitle').textContent = status.title;
+      $('statusDetail').textContent = status.detail;
+      $('statusBadge').textContent = status.badge;
+      $('statusBadge').className = 'badge'+(status.badgeClass?' '+status.badgeClass:'');
+      const allowBoard = !finished() && (mode==='local'||(mode==='cpu'&&game.turn==='X')||(online&&connected&&game.turn===(role==='host'?'X':'O')&&!awaitingMove));
+      squares.forEach((cell,i)=>{
+        const mark = game.board[i];
+        cell.textContent = mark;
+        cell.className = 'cell'+(mark?' '+mark.toLowerCase():'')+(game.line.includes(i)?' win':'')+(game.last===i?' last':'');
+        cell.disabled = !!mark || !allowBoard;
+        cell.setAttribute('aria-label',NAMES[i]+', '+(mark||'empty')+(game.line.includes(i)?', winning line':''));
+      });
+      $('winLine').classList.toggle('hidden',!game.winner);
+      $('winLine').classList.toggle('o',game.winner==='O');
+      if (game.line.length===3) {
+        const coord = i=>({x:(i%3)*100/3+100/6,y:Math.floor(i/3)*100/3+100/6});
+        const a=coord(game.line[0]),b=coord(game.line[2]);
+        $('line').setAttribute('x1',a.x);$('line').setAttribute('y1',a.y);
+        $('line').setAttribute('x2',b.x);$('line').setAttribute('y2',b.y);
+      }
+      $('roundLabel').textContent = awaitingRematch?'Requesting…':finished()?'Rematch':'New round';
+      $('roundButton').disabled = online?(!connected||(!finished())||awaitingRematch):false;
+      $('resetButton').disabled = online && role!=='host';
+    }
+    function publish() { if (mode==='online'&&role==='host') send({type:'state',state:game}); }
+    function play(index,mark) {
+      if (finished()||game.board[index]||game.turn!==mark) return false;
+      game.board[index]=mark;game.last=index;
+      const outcome=result(game.board);
+      game.winner=outcome.winner;game.line=outcome.line;game.draw=!!outcome.draw;
+      if (game.winner) game.scores[game.winner]++;
+      else if (game.draw) game.scores.D++;
+      else game.turn=mark==='X'?'O':'X';
+      game.revision++;
+      tone(game.winner?'win':game.draw?'draw':mark);
+      vibrate(game.winner?38:13);
+      render(); publish();
+      if (mode==='cpu'&&game.turn==='O'&&!finished()) {
+        cancelAI();
+        aiTimer=setTimeout(()=>{
+          aiTimer=null;
+          if (mode==='cpu'&&game.turn==='O'&&!finished()) play(computerMove(), 'O');
+        },level==='easy'?330:430);
+      }
+      return true;
+    }
+    function minimax(board,turn,depth) {
+      const end=result(board);
+      if (end.winner==='O') return 10-depth;
+      if (end.winner==='X') return depth-10;
+      if (end.draw) return 0;
+      let best=turn==='O'?-Infinity:Infinity;
+      for (let i=0;i<9;i++) {
+        if (board[i]) continue;
+        board[i]=turn;
+        const score=minimax(board,turn==='O'?'X':'O',depth+1);
+        board[i]='';
+        best=turn==='O'?Math.max(best,score):Math.min(best,score);
+      }
+      return best;
+    }
+    function computerMove() {
+      const free=game.board.map((v,i)=>v?-1:i).filter(i=>i>=0);
+      if (level==='easy') return free[Math.floor(Math.random()*free.length)];
+      let best=-Infinity,moves=[];
+      for (const i of free) {
+        const board=game.board.slice();board[i]='O';
+        const score=minimax(board,'X',1);
+        if (score>best){best=score;moves=[i];}
+        else if (score===best) moves.push(i);
+      }
+      // Favor center and corners when moves have equal minimax scores.
+      const preference=[4,0,2,6,8,1,3,5,7];
+      return preference.find(i=>moves.includes(i));
+    }
+    function startRound(resetScores=false) {
+      cancelAI();awaitingMove=false;awaitingRematch=false;
+      const old=game;
+      game=NEW();
+      game.round=resetScores?1:old.round+1;
+      game.revision=old.revision+1;
+      if (!resetScores) game.scores={...old.scores};
+      render();publish();tone('tap');vibrate();
+    }
+    function onSquare(i) {
+      if (mode==='online') {
+        if (!connected||finished()||game.board[i]||awaitingMove) return;
+        if (role==='host'&&game.turn==='X') play(i,'X');
+        else if (role==='guest'&&game.turn==='O') {
+          awaitingMove=true;
+          if (!send({type:'move',index:i,round:game.round,revision:game.revision})) {
+            awaitingMove=false;toast('Connection interrupted');
+          } else { tone('tap');vibrate(); }
+          render();
+        }
+      } else if (mode==='local') play(i,game.turn);
+      else if (mode==='cpu'&&game.turn==='X') play(i,'X');
+    }
+    function updateSound() {
+      $('soundButton').setAttribute('aria-pressed',String(sound));
+      $('soundButton').setAttribute('aria-label',sound?'Mute sounds':'Enable sounds');
+      $('soundOn').classList.toggle('hidden',!sound);
+      $('soundOff').classList.toggle('hidden',sound);
+    }
+    function cleanupNetwork() {
+      op++;clearJoinTimer();cancelAI();
+      awaitingMove=false;awaitingRematch=false;
+      const oldConn=connection,oldPeer=peer;
+      connection=null;peer=null;connected=false;role='';room='';phase='idle';networkNote='';
+      try{oldConn?.close();}catch(_){}
+      try{oldPeer?.destroy();}catch(_){}
+    }
+    function setMode(next) {
+      if (!['local','cpu','online'].includes(next)) return;
+      if (mode===next) return;
+      cleanupNetwork();mode=next;game=NEW();
+      $('joinForm').classList.add('hidden');$('roomInput').value='';
+      render();tone('tap');
+    }
+    function codeFromUrl() {
+      try { return new URL(location.href).searchParams.get('room')?.trim().toUpperCase().replace(/[^A-Z2-9]/g,'').slice(0,6)||''; }
+      catch (_) { return ''; }
+    }
+    function setUrlCode(value) {
+      try {
+        if (!['https:','http:'].includes(location.protocol)) return;
+        const url=new URL(location.href);
+        if (value) url.searchParams.set('room',value); else url.searchParams.delete('room');
+        history.replaceState(null,'',url.toString());
+      } catch (_) {}
+    }
+    function makeInvite() {
+      if (!['http:','https:'].includes(location.protocol)||!room) return '';
+      try {const u=new URL(location.href);u.searchParams.set('room',room);u.hash='';return u.toString();}
+      catch (_) {return '';}
+    }
+    function nextCode() {
+      const bytes=new Uint8Array(6);
+      if (crypto?.getRandomValues) crypto.getRandomValues(bytes);
+      else for(let i=0;i<6;i++) bytes[i]=Math.floor(Math.random()*256);
+      return [...bytes].map(b=>ALPHABET[b%ALPHABET.length]).join('');
+    }
+    async function iceServers() {
+      // The legacy public OpenRelay credentials can be rate-limited or retired.
+      // The documented static-auth endpoint is tried first when Web Crypto is available.
+      const servers=STUN.slice();
+      try {
+        if (globalThis.crypto?.subtle && globalThis.TextEncoder) {
+          const username=Math.floor(Date.now()/1000+7200)+':xo-arena';
+          const key=await crypto.subtle.importKey('raw',new TextEncoder().encode('openrelayprojectsecret'),{name:'HMAC',hash:'SHA-1'},false,['sign']);
+          const signature=new Uint8Array(await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(username)));
+          const credential=btoa(String.fromCharCode(...signature));
+          servers.push({urls:['turn:staticauth.openrelay.metered.ca:80','turn:staticauth.openrelay.metered.ca:443','turn:staticauth.openrelay.metered.ca:443?transport=tcp'],username,credential});
+        }
+      } catch (_) { /* Google STUN and legacy TURN remain available. */ }
+      servers.push({urls:['turn:openrelay.metered.ca:80','turn:openrelay.metered.ca:443','turn:openrelay.metered.ca:443?transport=tcp'],username:'openrelayproject',credential:'openrelayproject'});
+      return servers;
+    }
+    function onlineError(message) {
+      connected=false;awaitingMove=false;awaitingRematch=false;phase='error';networkNote=message;
+      clearJoinTimer();render();
+    }
+    function attachConnection(candidate,token) {
+      if (token!==op) {try{candidate.close();}catch(_){} return;}
+      if (connection && connection!==candidate) {
+        candidate.on('open',()=>{try{candidate.send({type:'busy'});}catch(_){} setTimeout(()=>candidate.close(),120);});
+        return;
+      }
+      connection=candidate;
+      candidate.on('open',()=>{
+        if(token!==op||connection!==candidate) return;
+        clearJoinTimer();connected=true;phase='connected';networkNote='';
+        awaitingMove=false;awaitingRematch=false;
+        if(role==='host') send({type:'state',state:game});
+        else send({type:'hello'});
+        render();tone('tap');vibrate();toast('Opponent connected');
+      });
+      candidate.on('data',msg=>{
+        if(token!==op||connection!==candidate||!msg||typeof msg!=='object')return;
+        if(role==='host') {
+          if(msg.type==='hello'){publish();return;}
+          if(msg.type==='move') {
+            if(!Number.isInteger(msg.index)||msg.index<0||msg.index>8||
+                msg.round!==game.round||msg.revision!==game.revision||game.turn!=='O'||finished()||game.board[msg.index]) {
+              publish();return;
+            }
+            play(msg.index,'O');return;
+          }
+          if(msg.type==='rematch'&&finished()&&msg.round===game.round) {startRound();return;}
+        } else if(role==='guest') {
+          if(msg.type==='busy') {onlineError('This room already has two players.');return;}
+          if(msg.type==='state') {
+            const next=msg.state;
+            if(!validState(next)||next.revision<game.revision)return;
+            const prevLast=game.last,prevRevision=game.revision,prevWinner=game.winner;
+            game={board:[...next.board],turn:next.turn,winner:next.winner,line:[...next.line],draw:next.draw,
+              last:next.last,round:next.round,revision:next.revision,scores:{...next.scores}};
+            awaitingMove=false;awaitingRematch=false;
+            if(game.revision!==prevRevision&&game.last>=0&&(game.last!==prevLast||game.round>1)) {
+              tone(game.winner&&!prevWinner?'win':game.board[game.last]);vibrate();
+            }
+            render();
+          }
+        }
+      });
+      candidate.on('close',()=>{
+        if(token!==op||connection!==candidate)return;
+        connection=null;connected=false;awaitingMove=false;awaitingRematch=false;
+        clearJoinTimer();phase='lost';
+        networkNote=role==='host'?'Opponent disconnected. Your room stays open for another player.':'Disconnected from host. Leave the room and rejoin with the code.';
+        render();toast('Connection lost');
+      });
+      candidate.on('error',()=>{
+        if(token!==op||connection!==candidate)return;
+        onlineError('Peer connection failed. Check cellular service or Wi-Fi.');
+      });
+    }
+    function validState(s) {
+      if (!s||typeof s!=='object'||!Array.isArray(s.board)||s.board.length!==9||
+          !s.board.every(v=>v===''||v==='X'||v==='O')||!['X','O'].includes(s.turn)||
+          !['','X','O'].includes(s.winner)||typeof s.draw!=='boolean'||!Array.isArray(s.line)||
+          !s.line.every(i=>Number.isInteger(i)&&i>=0&&i<9)||
+          !Number.isInteger(s.last)||s.last< -1||s.last>8||
+          !Number.isInteger(s.round)||s.round<1||
+          !Number.isSafeInteger(s.revision)||s.revision<0||!s.scores)return false;
+      return ['X','O','D'].every(k=>Number.isSafeInteger(s.scores[k])&&s.scores[k]>=0);
+    }
+    function watchPeer(p,token) {
+      p.on('disconnected',()=>{
+        if(token!==op)return;
+        networkNote='Signaling server disconnected. An existing game may still work.';
+        if(!connected)phase='error';render();
+        try{if(!p.destroyed&&p.disconnected)p.reconnect();}catch(_){}
+      });
+      p.on('error',err=>{
+        if(token!==op)return;
+        if(err?.type==='unavailable-id'&&role==='host'&&!connected) {
+          toast('Room code in use — creating another');
+          startHost(true);return;
+        }
+        if(err?.type==='peer-unavailable') onlineError('Room not found. Ask your friend to keep their host screen open.');
+        else if(err?.type==='network'||err?.type==='server-error') onlineError('Signaling unavailable. Check your internet connection and try again.');
+        else onlineError('Could not connect: '+(err?.type||'network error')+'.');
+      });
+      p.on('close',()=>{if(token===op)onlineError('Online session closed. Leave and try again.');});
+    }
+    async function startHost(retrying=false) {
+      if(mode!=='online')return;
+      if(!window.Peer){toast('PeerJS could not load. Check your internet connection.');return;}
+      cleanupNetwork();role='host';room=nextCode();phase='creating';networkNote='Opening your room…';render();
+      const token=op,servers=await iceServers();
+      if(token!==op)return;
+      try {
+        peer=new Peer(PEER_PREFIX+room,{debug:0,config:{iceServers:servers,iceCandidatePoolSize:4}});
+        watchPeer(peer,token);
+        peer.on('open',()=>{
+          if(token!==op)return;
+          phase='waiting';networkNote='Room is live. Share your code and keep this app open.';
+          render();setUrlCode(room);
+          if(!retrying)toast('Room created');
+        });
+        peer.on('connection',conn=>attachConnection(conn,token));
+      } catch(_){onlineError('Could not create the room. Please try again.');}
+    }
+    async function joinRoom(code) {
+      code=(code||'').toUpperCase().replace(/[^A-Z2-9]/g,'').slice(0,6);
+      if(code.length!==6){toast('Enter the six-character room code');return;}
+      if(!window.Peer){toast('PeerJS could not load. Check your internet connection.');return;}
+      if(mode!=='online')setMode('online');
+      cleanupNetwork();role='guest';room=code;phase='connecting';networkNote='Looking for the host…';render();setUrlCode(room);
+      const token=op,servers=await iceServers();
+      if(token!==op)return;
+      try{
+        peer=new Peer(undefined,{debug:0,config:{iceServers:servers,iceCandidatePoolSize:4}});
+        watchPeer(peer,token);
+        peer.on('open',()=>{
+          if(token!==op)return;
+          networkNote='Connecting securely…';render();
+          attachConnection(peer.connect(PEER_PREFIX+room,{reliable:true,serialization:'json'}),token);
+          joinTimer=setTimeout(()=>{
+            if(token===op&&!connected) {
+              const old=connection;connection=null;try{old?.close();}catch(_){}
+              onlineError('Connection timed out. Host must stay online; some cellular networks require a working TURN relay.');
+            }
+          },18000);
+        });
+      }catch(_){onlineError('Could not join. Please try again.');}
+    }
+    async function copyText(text) {
+      if(!text){toast('A share link needs an HTTPS-hosted page');return;}
+      try{
+        if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);toast('Copied!');return;}
+      }catch(_){}
+      const el=document.createElement('textarea');el.value=text;el.style.cssText='position:fixed;top:-1000px;opacity:0';
+      document.body.append(el);el.focus();el.select();
+      let ok=false;try{ok=document.execCommand('copy');}catch(_){}
+      el.remove();toast(ok?'Copied!':'Could not copy. Select and copy manually.');
+    }
+
+    squares.forEach((cell,i)=>cell.addEventListener('click',()=>onSquare(i)));
+    document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+    document.querySelectorAll('[data-level]').forEach(b=>b.addEventListener('click',()=>{
+      if(level===b.dataset.level)return;
+      level=b.dataset.level;
+      if(mode==='cpu'){game=NEW();cancelAI();}
+      render();tone('tap');
+    }));
+    $('soundButton').addEventListener('click',()=>{sound=!sound;updateSound();try{localStorage.setItem('xo-arena-sound',sound?'on':'off');}catch(_){}if(sound)tone('tap');});
+    $('roundButton').addEventListener('click',()=>{
+      if(mode!=='online'){startRound();return;}
+      if(!connected||!finished()||awaitingRematch)return;
+      if(role==='host')startRound();
+      else {awaitingRematch=true;if(!send({type:'rematch',round:game.round}))awaitingRematch=false;render();}
+    });
+    $('resetButton').addEventListener('click',()=>{
+      if(mode==='online'&&role!=='host')return;
+      startRound(true);toast('Scores reset');
+    });
+    $('hostButton').addEventListener('click',()=>startHost());
+    $('revealJoin').addEventListener('click',()=>{$('joinForm').classList.toggle('hidden');$('roomInput').focus();tone('tap');});
+    $('roomInput').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z2-9]/g,'').slice(0,6);});
+    $('roomInput').addEventListener('keydown',e=>{if(e.key==='Enter')joinRoom($('roomInput').value);});
+    $('joinButton').addEventListener('click',()=>joinRoom($('roomInput').value));
+    $('copyCode').addEventListener('click',()=>copyText(room));
+    $('copyLink').addEventListener('click',()=>copyText(makeInvite()));
+    $('shareButton').addEventListener('click',async()=>{
+      const link=makeInvite();
+      if(!link){toast('Host this file on HTTPS to share a link; code sharing still works.');return;}
+      try{if(navigator.share){await navigator.share({title:'XO Arena',text:'Join my tic-tac-toe room '+room,url:link});return;}}catch(err){if(err?.name==='AbortError')return;}
+      copyText(link);
+    });
+    $('leaveButton').addEventListener('click',()=>{cleanupNetwork();setUrlCode('');render();toast('Left online room');});
+    // Keep status honest when a phone loses access to its data connection.
+    window.addEventListener('offline',()=>{if(mode==='online'&&role){networkNote='This device is offline. Reconnect to the internet to continue.';render();}});
+    window.addEventListener('online',()=>{if(mode==='online'&&role&&connected){networkNote='';render();}});
+    window.addEventListener('pagehide',()=>{if(peer) {try{connection?.close();peer.destroy();}catch(_){}}});
+    updateSound();render();
+    const invite=codeFromUrl();
+    if(invite.length===6) {
+      setMode('online');
+      // A deferred CDN script has finished before DOMContentLoaded, but file loads may fail offline.
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>joinRoom(invite),{once:true});
+      else joinRoom(invite);
+    }
+  })();
+  </script>
+</body>
+</html>
